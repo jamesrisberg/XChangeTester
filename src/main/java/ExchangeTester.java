@@ -62,20 +62,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(ticker.toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiMarketDataService.getOrderBook(CurrencyPair.ETH_BTC)\n");
@@ -84,20 +85,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(orderBook.toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiMarketDataService.getTrades(CurrencyPair.ETH_BTC)\n");
@@ -106,20 +108,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(trades.toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
     }
 
     private static void testAccountService(final Exchange liquiExchange) throws IOException {
@@ -134,20 +137,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(accountInfo.toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiAccountService.withdrawFunds(Currency.BTC, new BigDecimal(0.01), \"ADDRESS\")\n");
@@ -159,20 +163,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(response);
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiAccountService.requestDepositAddress(Currency.BTC)\n");
@@ -181,20 +186,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(response);
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiAccountService.getFundingHistory(tradeHistoryParams)\n");
@@ -205,20 +211,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(records.toArray().toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
     }
 
     private static void testTradeService(final Exchange liquiExchange) throws IOException {
@@ -233,20 +240,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(openOrders.toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiTradeService.placeMarketOrder(marketOrder)\n");
@@ -256,20 +264,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(response);
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiTradeService.placeLimitOrder(limitOrder)\n");
@@ -279,20 +288,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(response);
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiTradeService.placeStopOrder(stopOrder)\n");
@@ -302,20 +312,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(response);
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiTradeService.cancelOrder(orderID)\n");
@@ -324,20 +335,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(canceled);
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiTradeService.getTradeHistory(tradeHistoryParams)\n");
@@ -347,20 +359,21 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(trades.getUserTrades().toArray().toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
             System.out.println("Trying liquiTradeService.getOrder(orderIDs)\n");
@@ -369,19 +382,20 @@ public class ExchangeTester {
 
             System.out.println("Success! Result:");
             System.out.println(orders.toArray().toString());
-            System.out.println("\n\n----------------------------------------------------------------------\n\n");
         } catch (NotAvailableFromExchangeException e) {
-            System.err.println("NotAvailableFromExchangeException " + e.getMessage());
+            System.out.println("NotAvailableFromExchangeException " + e.getMessage());
         } catch (NotYetImplementedForExchangeException e) {
-            System.err.println("NotYetImplementedForExchangeException " + e.getMessage());
+            System.out.println("NotYetImplementedForExchangeException " + e.getMessage());
         } catch (LiquiException e) {
-            System.err.println("LiquiException " + e.getMessage());
+            System.out.println("LiquiException " + e.getMessage());
         } catch (IOException e) {
-            System.err.println("IOException " + e.getMessage());
+            System.out.println("IOException " + e.getMessage());
         } catch (UndeclaredThrowableException e) {
-            System.err.println("UndeclaredThrowableException " + e.getMessage());
+            System.out.println("UndeclaredThrowableException " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("NullPointerException " + e.getMessage());
+            System.out.println("NullPointerException " + e.getMessage());
         }
+
+        System.out.println("\n\n----------------------------------------------------------------------\n\n");
     }
 }
