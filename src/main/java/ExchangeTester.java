@@ -29,8 +29,11 @@ import org.knowm.xchange.dto.trade.UserTrades;
 
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
+import org.knowm.xchange.liqui.LiquiExchange;
 import org.knowm.xchange.liqui.dto.LiquiException;
+import org.knowm.xchange.service.account.AccountService;
 import org.knowm.xchange.service.marketdata.MarketDataService;
+import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 
 import org.knowm.xchange.liqui.dto.marketdata.LiquiTicker;
@@ -41,24 +44,24 @@ import org.knowm.xchange.liqui.service.LiquiTradeService;
 public class ExchangeTester {
 
     public static final void main(final String[] args) throws IOException {
-        final Exchange exchange = TestExchangeFactory.createTestExchange();
+        final Exchange exchange = TestExchangeFactory.createTestExchange(LiquiExchange.class, TestExchangeFactory.KEY, TestExchangeFactory.SECRET);
 
         testMarketDataService(exchange);
         testAccountService(exchange);
         testTradeService(exchange);
     }
 
-    private static void testMarketDataService(final Exchange liquiExchange) throws IOException {
-        final LiquiMarketDataService liquiMarketDataService = (LiquiMarketDataService) liquiExchange.getMarketDataService();
+    private static void testMarketDataService(final Exchange exchange) throws IOException {
+        final MarketDataService marketDataService = exchange.getMarketDataService();
 
         CurrencyPair testPair = CurrencyPair.ETH_BTC;
 
         System.out.println("******************  Market Data Service Tests!  ******************\n\n");
 
         try {
-            System.out.println("Trying liquiMarketDataService.getTicker(CurrencyPair.ETH_BTC)\n");
+            System.out.println("Trying getTicker(CurrencyPair.ETH_BTC)\n");
 
-            Ticker ticker = liquiMarketDataService.getTicker(testPair, null, null);
+            Ticker ticker = marketDataService.getTicker(testPair, null, null);
 
             System.out.println("Success! Result:");
             System.out.println(ticker.toString());
@@ -79,9 +82,9 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiMarketDataService.getOrderBook(CurrencyPair.ETH_BTC)\n");
+            System.out.println("Trying getOrderBook(CurrencyPair.ETH_BTC)\n");
 
-            OrderBook orderBook = liquiMarketDataService.getOrderBook(testPair, null, null);
+            OrderBook orderBook = marketDataService.getOrderBook(testPair, null, null);
 
             System.out.println("Success! Result:");
             System.out.println(orderBook.toString());
@@ -102,9 +105,9 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiMarketDataService.getTrades(CurrencyPair.ETH_BTC)\n");
+            System.out.println("Trying getTrades(CurrencyPair.ETH_BTC)\n");
 
-            Trades trades = liquiMarketDataService.getTrades(testPair, null, null);
+            Trades trades = marketDataService.getTrades(testPair, null, null);
 
             System.out.println("Success! Result:");
             System.out.println(trades.toString());
@@ -125,15 +128,15 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
     }
 
-    private static void testAccountService(final Exchange liquiExchange) throws IOException {
-        final LiquiAccountService liquiAccountService = (LiquiAccountService) liquiExchange.getAccountService();
+    private static void testAccountService(final Exchange exchange) throws IOException {
+        final AccountService accountService = exchange.getAccountService();
 
         System.out.println("******************  Account Service Tests!  ******************\n\n");
 
         try {
-            System.out.println("Trying liquiAccountService.getAccountInfo()\n");
+            System.out.println("Trying getAccountInfo()\n");
 
-            AccountInfo accountInfo = liquiAccountService.getAccountInfo();
+            AccountInfo accountInfo = accountService.getAccountInfo();
 
             System.out.println("Success! Result:");
             System.out.println(accountInfo.toString());
@@ -154,12 +157,12 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiAccountService.withdrawFunds(Currency.BTC, new BigDecimal(0.01), \"ADDRESS\")\n");
+            System.out.println("Trying withdrawFunds(Currency.BTC, new BigDecimal(0.01), \"ADDRESS\")\n");
 
             String address = "ADDRESS";
             BigDecimal amount = new BigDecimal(0.01);
 
-            String response = liquiAccountService.withdrawFunds(Currency.BTC, amount, address);
+            String response = accountService.withdrawFunds(Currency.BTC, amount, address);
 
             System.out.println("Success! Result:");
             System.out.println(response);
@@ -180,9 +183,9 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiAccountService.requestDepositAddress(Currency.BTC)\n");
+            System.out.println("Trying requestDepositAddress(Currency.BTC)\n");
 
-            String response = liquiAccountService.requestDepositAddress(Currency.BTC, null, null);
+            String response = accountService.requestDepositAddress(Currency.BTC, null, null);
 
             System.out.println("Success! Result:");
             System.out.println(response);
@@ -203,11 +206,11 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiAccountService.getFundingHistory(tradeHistoryParams)\n");
+            System.out.println("Trying getFundingHistory(tradeHistoryParams)\n");
 
-            TradeHistoryParams params = liquiAccountService.createFundingHistoryParams();
+            TradeHistoryParams params = accountService.createFundingHistoryParams();
 
-            List<FundingRecord> records = liquiAccountService.getFundingHistory(params);
+            List<FundingRecord> records = accountService.getFundingHistory(params);
 
             System.out.println("Success! Result:");
             System.out.println(records.toArray().toString());
@@ -228,15 +231,15 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
     }
 
-    private static void testTradeService(final Exchange liquiExchange) throws IOException {
-        final LiquiTradeService liquiTradeService = (LiquiTradeService) liquiExchange.getTradeService();
+    private static void testTradeService(final Exchange exchange) throws IOException {
+        final TradeService tradeService = exchange.getTradeService();
 
         System.out.println("******************  Trade Service Tests!  ******************\n\n");
 
         try {
-            System.out.println("Trying liquiTradeService.getOpenOrders()\n");
+            System.out.println("Trying getOpenOrders()\n");
 
-            OpenOrders openOrders = liquiTradeService.getOpenOrders();
+            OpenOrders openOrders = tradeService.getOpenOrders();
 
             System.out.println("Success! Result:");
             System.out.println(openOrders.toString());
@@ -257,10 +260,10 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiTradeService.placeMarketOrder(marketOrder)\n");
+            System.out.println("Trying placeMarketOrder(marketOrder)\n");
 
             MarketOrder order = new MarketOrder(Order.OrderType.BID, new BigDecimal(0.01), CurrencyPair.BTC_USD);
-            String response = liquiTradeService.placeMarketOrder(order);
+            String response = tradeService.placeMarketOrder(order);
 
             System.out.println("Success! Result:");
             System.out.println(response);
@@ -281,10 +284,10 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiTradeService.placeLimitOrder(limitOrder)\n");
+            System.out.println("Trying placeLimitOrder(limitOrder)\n");
 
             LimitOrder order = new LimitOrder(Order.OrderType.BID, new BigDecimal(0.01), CurrencyPair.BTC_USD, "ID", Date.from(Instant.now()), new BigDecimal(10000));
-            String response = liquiTradeService.placeLimitOrder(order);
+            String response = tradeService.placeLimitOrder(order);
 
             System.out.println("Success! Result:");
             System.out.println(response);
@@ -305,10 +308,10 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiTradeService.placeStopOrder(stopOrder)\n");
+            System.out.println("Trying placeStopOrder(stopOrder)\n");
 
             StopOrder order = new StopOrder(Order.OrderType.BID, new BigDecimal(0.01), CurrencyPair.BTC_USD, "ID", Date.from(Instant.now()), new BigDecimal(10000));
-            String response = liquiTradeService.placeStopOrder(order);
+            String response = tradeService.placeStopOrder(order);
 
             System.out.println("Success! Result:");
             System.out.println(response);
@@ -329,9 +332,9 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiTradeService.cancelOrder(orderID)\n");
+            System.out.println("Trying cancelOrder(orderID)\n");
 
-            boolean canceled = liquiTradeService.cancelOrder("1");
+            boolean canceled = tradeService.cancelOrder("1");
 
             System.out.println("Success! Result:");
             System.out.println(canceled);
@@ -352,10 +355,10 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiTradeService.getTradeHistory(tradeHistoryParams)\n");
+            System.out.println("Trying getTradeHistory(tradeHistoryParams)\n");
 
-            TradeHistoryParams params = liquiTradeService.createTradeHistoryParams();
-            UserTrades trades = liquiTradeService.getTradeHistory(params);
+            TradeHistoryParams params = tradeService.createTradeHistoryParams();
+            UserTrades trades = tradeService.getTradeHistory(params);
 
             System.out.println("Success! Result:");
             System.out.println(trades.getUserTrades().toArray().toString());
@@ -376,9 +379,9 @@ public class ExchangeTester {
         System.out.println("\n\n----------------------------------------------------------------------\n\n");
 
         try {
-            System.out.println("Trying liquiTradeService.getOrder(orderIDs)\n");
+            System.out.println("Trying getOrder(orderIDs)\n");
 
-            Collection<Order> orders = liquiTradeService.getOrder("1");
+            Collection<Order> orders = tradeService.getOrder("1");
 
             System.out.println("Success! Result:");
             System.out.println(orders.toArray().toString());
